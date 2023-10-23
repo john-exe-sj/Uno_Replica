@@ -1,0 +1,111 @@
+<div class="grid grid-cols-8 gap-3">
+    <div
+        class="col-span-5 overflow-y-scroll rounded-lg game_bar h-50 max-h-583"
+    >
+        <ul id="game_list" class="">
+            <li class="px-3 py-3 list-none border rounded-sm">Game List</li>
+            {{#each game_list}}
+                <li class="px-3 py-3 list-none border rounded-sm bg-slate-100">
+                    <a href="/game/{{this.game.game_id}}">Game
+                        {{this.game.game_id}}</a>
+                    <ul
+                        class="list_of_players"
+                        style="list-style: none;
+                                      margin: 0;
+                                      padding: 0;
+                                      display: inline-flex"
+                    >
+                        {{#each this.players}}
+                            <li
+                                style="
+                                    padding-right: 10px;
+                                    padding-left: 10px;"
+                            >
+                                {{this.display_name}}
+                            </li>
+                        {{/each}}
+                    </ul>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+    {{#unless user.username}}
+        <div class="justify-center col-span-3">
+            <h2 class="px-3 py-3">Login</h2>
+            <form
+                action="/login"
+                id="login_form"
+                method="POST"
+                enctype="application/x-www-form-urlencoded"
+            >
+                <label
+                    class="flex px-3 py-3 rounded-lg"
+                    for="username"
+                >Username</label>
+                <input
+                    class="flex px-3 py-3 rounded-lg w-96"
+                    type="text"
+                    name="username"
+                    placeholder="Enter username"
+                    required
+                />
+                <label
+                    class="flex px-3 py-3 rounded-lg"
+                    for="password"
+                >Password</label>
+                <input
+                    class="flex px-3 py-3 rounded-lg w-96"
+                    type="password"
+                    name="password"
+                    placeholder="Enter password"
+                    autocomplete="on"
+                    required
+                />
+                <button
+                    class="px-4 py-2 mt-3 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
+                    id="login_form_button"
+                >Login
+                </button>
+            </form>
+        </div>
+    {{else}}
+        <div
+            class="flex flex-col items-center justify-center col-span-3 p-4 bg-white shadow-lg card rounded-2xl"
+        >
+            <img
+                class="w-50 h-50"
+                src="/images/face.webp"
+                alt="sum ting wong"
+            />
+            <div class="font-mono text-lg text-center text-gray-800">Username:
+                {{user.username}}</div>
+            {{!-- <div>Info1: {{account_id}}</div> --}}
+            {{!-- <div>Info2: {{password}}</div> --}}
+            {{!-- <div>Info3: {{statistic_id}}</div> --}}
+            <div class="font-mono text-lg text-center text-gray-800">Current
+                Wins:
+                {{user.num_wins}}</div>
+            <div class="font-mono text-lg text-center text-gray-800">Current
+                Losses:
+                {{user.num_loss}}</div>
+            {{!-- <div>Info6: {{date_joined}}</div> --}}
+            <div class="w-full mt-8">
+                <button
+                    {{! We can add this to the game or user or index.  }}
+                    id="createGame"
+                    {{! formaction="/postCreateGame" }}
+                    class="w-full px-2 py-2 font-semibold text-white bg-blue-500 rounded-lg shadow-lg hover:bg-blue-600"
+                >Create Game
+                </button>
+            </div>
+
+            <div class="w-full mt-8">
+                <button
+                    id="logout"
+                    class="w-full px-2 py-2 font-semibold text-white bg-blue-500 rounded-lg shadow-lg hover:bg-blue-600"
+                >Logout
+                </button>
+            </div>
+        </div>
+    {{/unless}}
+</div>

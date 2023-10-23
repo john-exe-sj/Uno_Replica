@@ -1,0 +1,126 @@
+<header>
+    <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded">
+        <div
+            class="container flex flex-wrap items-center justify-between mx-auto"
+        >
+            <div>
+                <img
+                    class="object-contain h-12"
+                    src="/images/UNO_Logo.webp"
+                    alt="uno_image"
+                />
+            </div>
+            <ul class="flex">
+                <li class="mr-6">
+                    <a class="hover:text-blue-800" href="/">Home</a>
+                </li>
+
+                <li class="mr-6">
+                    <button
+                        class="hover:text-blue-800"
+                        id="rules-btn"
+                    >Rules</button>
+                    <div
+                        id="overlay"
+                        class="fixed inset-0 z-10 flex items-center justify-center hidden bg-black bg-opacity-50"
+                    >
+                        <div
+                            class="max-w-5xl px-2 py-1 bg-gray-200 rounded shadow-xl"
+                        >
+                            <div class="flex items-center justify-between">
+                                <h2 class="text-2xl font-bold">Rules</h2>
+                                <svg
+                                    id="close-btn"
+                                    class="w-6 h-6 p-1 rounded-full cursor-pointer hover:bg-gray-300"
+                                    id="close-modal"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <div class="mt-2">
+                                <p><span class="font-bold">1.</span>
+                                    Seven cardRows are dealt to each player</p>
+                                <p><span class="font-bold">2.</span>
+                                    The top card of the remaining deck is filled
+                                    over and set aside to begind the discard
+                                    pile.</p>
+                                <p><span class="font-bold">3.</span>
+                                    The player to the dealer's left plays first
+                                    unless the first card on the discard pile is
+                                    an action or Wild card</p>
+                                <p><span class="font-bold">4.</span>
+                                    On a player's turn, they must do one of the
+                                    following</p>
+                                <ul>
+                                    <li>
+                                        <p><span class="font-bold">a)</span>
+                                            play one card matching the discard
+                                            in color, number, or symbol</p>
+                                    </li>
+                                    <li>
+                                        <p><span class="font-bold">b)</span>
+                                            play a Wild card, or a playable Wild
+                                            Draw Four card (restriction applied)</p>
+                                    </li>
+                                    <li>
+                                        <p><span class="font-bold">c)</span>
+                                            draw the top card from the deck,
+                                            then play it if possible</p>
+                                    </li>
+                                </ul>
+                                <p>A challenged player must show his/her hand to
+                                    the player who challenged. If the challenged
+                                    player is guilty, he/she must draw the 4
+                                    cardRows. If the challenged player is
+                                    guilty, he/she must draw the 4 cardRows. If
+                                    the challenged player is not guilty, the
+                                    challenger must draw 4 cardRows, plus 2
+                                    additional cardRows. Only the person
+                                    required to draw the 4 cardRows can make the
+                                    challenge.</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                {{#unless user.user_id}}
+                    <li class="mr-6">
+                        <a
+                            class="hover:text-blue-800"
+                            href="/registration"
+                        >Register</a>
+                    </li>
+                {{/unless}}
+
+                <li class="relative inline-block mr-6 dropdown">
+                    <button
+                        class="inline-flex items-center w-16 text-gray-700 rounded"
+                    >
+                        <span class="mr-1">Setting</span>
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                            <path
+                                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                            ></path>
+                        </svg>
+                    </button>
+                    <ul
+                        class="absolute hidden pt-1 text-gray-700 dropdown-menu"
+                    >
+                        <li class="">
+                            <a
+                                class="block px-4 py-2 whitespace-no-wrap bg-gray-200 rounded-b hover:bg-gray-400"
+                                href="#"
+                            >Dark Mode</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,127 @@
+<div class="grid grid-cols-4">
+    <div class="grid grid-cols-3 col-span-3 gap-4" id="list_of_players">
+    </div>
+    <!-- justify-items-center items-center -->
+    <div
+        class="grid invisible hidden grid-cols-3 col-span-3 gap-4 p-4"
+        id="game_window"
+    >
+        <div>
+            <button
+                id="leaveGame"
+                class="px-4 py-2 mb-4 font-bold text-white bg-red-500 rounded hover:bg-red-700"
+            >Leave</button>
+        </div>
+
+        <div class="self-start unoHand" id="player2"></div>
+        <div class="justify-self-end">
+            <div
+                id="currentColor"
+                class="w-10 h-10 rounded-lg bottom-10 right-1/2 animate-spin"
+            ></div>
+        </div>
+        <div class="unoHand justify-self-start" id="player1"></div>
+
+        <div
+            class="flex items-center content-center justify-center col-span-1 space-x-4"
+        >
+            <div class="flex-none cardWrapper">
+                <div class="unoCard flipped">
+                    <span class="inner">
+                        <span class="mark"></span>
+                    </span>
+                    <div class="cardShadow"></div>
+                </div>
+                <div class="cardWrapper" id="drawCard">
+                    <div class="unoCard flipped">
+                        <span class="inner">
+                            <span class="mark"></span>
+                        </span>
+                        <div class="cardShadow"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-none" id="discard"></div>
+        </div>
+
+        <div class="unoHand justify-self-end" id="player3"></div>
+        <div></div>
+        <div class="self-end unoHand" id="player0"></div>
+        <div></div>
+        <div class="relative grid">
+            <button
+                id="challenge"
+                class="self-center px-4 py-2 mb-4 font-bold text-white rounded glowButton bg-sky-500 justify-self-center"
+                disabled=""
+            >Challenge</button>
+        </div>
+        <div class="relative grid">
+            {{! <p
+                id="currentPlayer"
+                class="self-center px-4 py-2 mb-4 font-bold text-white rounded justify-self-center left-24 bg-sky-500"
+            ></p> }}
+            <div class="relative grid rounded">
+                <p
+                    id="currentPlayer"
+                    class="self-center w-64 px-2 py-2 mt-2 font-bold text-center text-white bg-black rounded justify-self-center left-24"
+                ></p>
+                <div
+                    class="self-center w-64 px-2 py-2 mt-1 font-bold text-center text-white bg-black rounded justify-self-center left-24"
+                    id="is_reverse"
+                ></div>
+                <div
+                    class="self-center w-64 px-2 py-2 mt-1 mb-2 font-bold text-center text-white bg-black rounded justify-self-center left-24"
+                    id="draw_amount"
+                ></div>
+            </div>
+            {{! possible animation uncomment line below to see effect }}
+            {{! <span
+                class="absolute inline-flex w-4/12 h-full rounded-full bg-gradient-to-r from-red-500 to-sky-500 opacity-95 animate-ping"
+            >
+            </span> }}
+        </div>
+
+        <div class="relative grid content-center">
+            <button
+                id="callUno"
+                class="self-center px-4 py-2 mb-4 font-bold text-white rounded glowButton justify-self-center bg-sky-500 hover:bg-sky-700"
+                disabled=""
+            >Uno</button>
+        </div>
+    </div>
+
+    <div
+        class="flex flex-col space-y-2 h-[calc(100vh_-_68px)] p-2 message_window"
+    >
+        <div class="flex flex-row font-bold text-black">
+            <p class="w-full text-center">Chat</p>
+        </div>
+        <div
+            class="p-2 overflow-x-hidden overflow-y-auto bg-white rounded grow"
+            id="sandbox_message_box"
+        >
+        </div>
+        <div class="flex flex-row rounded">
+            <textarea
+                class="w-full p-2 resize-none"
+                name=""
+                height="100%"
+                id="socket_message"
+                placeholder="Message here"
+            ></textarea>
+            <button
+                id="in_game_socket_message_button"
+                class="w-32 h-24 px-4 py-2 font-bold text-white bg-sky-500 hover:bg-sky-700"
+                {{! onclick="socket.emit('client-message', 'Hello FROM BUTTON'); console.log(`BUTTON CLICKED`)" }}
+            >
+                Send
+            </button>
+        </div>
+    </div>
+
+</div>
+<div id="wildFourUserEvent"></div>
+<div id="endGameFlashMessage"></div>
+
+{{! <script src="/javascripts/test_game.js"></script> }}
+<script src="/javascripts/uno_game_render.js"></script>
